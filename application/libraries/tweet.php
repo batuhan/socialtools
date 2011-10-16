@@ -119,11 +119,7 @@
 			
 			foreach ( $params['request'] as $k => $v )
 			{
-				if($k=='status'){
-  				$post .= $k.'='.rawurlencode($v).'&';
-				} else {
-  				$post .= "{$k}={$v}&";
-				}
+				$post .= "{$k}={$v}&";
 			}
 			
 			$post = substr($post, 0, -1);
@@ -281,9 +277,9 @@
 		
 		private $_obj;
 		private $_tokens = array();
-		private $_authorizationUrl 	= 'https://api.twitter.com/oauth/authorize';
-		private $_requestTokenUrl 	= 'https://api.twitter.com/oauth/request_token';
-		private $_accessTokenUrl 	= 'https://api.twitter.com/oauth/access_token';
+		private $_authorizationUrl 	= 'http://api.twitter.com/oauth/authorize';
+		private $_requestTokenUrl 	= 'http://api.twitter.com/oauth/request_token';
+		private $_accessTokenUrl 	= 'http://api.twitter.com/oauth/access_token';
 		private $_signatureMethod 	= 'HMAC-SHA1';
 		private $_version 			= '1.0';
 		private $_apiUrl 			= 'http://api.twitter.com/1';
