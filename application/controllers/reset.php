@@ -12,7 +12,12 @@
 			
 			if ( !$this->tweet->logged_in() )
 			{
-				redirect('/auth');
+				//redirect('/auth');
+				
+				$this->tweet->set_callback(site_url('/reset'));
+				
+				$this->tweet->login();
+				
 			}else{
 				$tokens = $this->tweet->get_tokens();
 				$this->tweet->set_tokens($tokens);
@@ -22,7 +27,9 @@
 		
 		function index()
 		{
-			redirect('/main');
+			$this->load->view('header');
+			echo '<a href="'.site_url('/reset/follows').'">wanna reset follows?</a>';
+			$this->load->view('footer');
 		}
 		
 		function follows()
