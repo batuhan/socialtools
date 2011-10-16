@@ -39,23 +39,22 @@
 			$follows = $this->tweet->call('get', 'friends/ids');
 			if($follows === FALSE){ echo '<h2>opps! something is wrong. can you please try again later?</h2>'; }
 			else{
-				$i = 0;
 				foreach($follows as $follow){
-					//$i = $i + 1;
-					//if($i < 5){
+					$time_passed = BI_TIME - time();
+					if($timepassed < 20){
 						$person_to_unfollow = array(
 							'user_id' => $follow
 						);
 
 						$unfollow = $this->tweet->call('post', 'friendships/destroy', $person_to_unfollow);
-					//}
+					}
 				}
 				$information = $this->tweet->call('get', 'account/verify_credentials');
 				if($information->friends_count > 1){
 					
-					echo '<H1>'.$i.' unfollowed, '.$information->friends_count.' left. <a href="'.site_url('/reset/follows').'">wanna continue?</a></H1>'; 
+					echo '<H1>some people unfollowed, '.$information->friends_count.' left. <a href="'.site_url('/reset/follows').'">wanna continue?</a></H1>'; 
 				}else{
-					echo 'everyone unfollowed.';
+					echo '<h1>everyone unfollowed.</h1>';
 				}
 			}
 			
