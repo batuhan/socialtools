@@ -14,10 +14,7 @@
 			{
 				redirect('/auth');
 			}
-			else
-			{
-				$tokens = $this->tweet->get_tokens();
-			}
+
 		}
 		
 		function index()
@@ -27,9 +24,13 @@
 		
 		function resetfollows()
 		{
+			$tokens = $this->tweet->get_tokens();
 			$follows = $this->tweet->call('get', 'friends/ids');
+			if($follows === FALSE){ echo 'opps! something is wrong. can you please try again later?'; }
+			else{
+				var_dump($follows);
+			}
 			
-			print_r($follows);
 			
 			/*
 			foreach($follows as $follow){
