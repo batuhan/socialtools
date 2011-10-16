@@ -286,7 +286,7 @@
 		private $_accessTokenUrl 	= 'http://api.twitter.com/oauth/access_token';
 		private $_signatureMethod 	= 'HMAC-SHA1';
 		private $_version 			= '1.0';
-		private $_apiUrl 			= 'http://api.twitter.com';
+		private $_apiUrl 			= 'http://api.twitter.com/1';
 		private $_searchUrl			= 'http://search.twitter.com/';
 		private $_callback = NULL;
 		private $_errors = array();
