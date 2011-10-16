@@ -42,7 +42,7 @@
 				$i = 0;
 				foreach($follows as $follow){
 					$i = $i + 1;
-					if($i < 12){
+					if($i < 5){
 						$person_to_unfollow = array(
 							'user_id' => $follow
 						);
