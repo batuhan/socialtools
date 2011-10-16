@@ -9,7 +9,7 @@
     RewriteRule ^(.+)/$ $1 [L,R=301]
  
     RewriteCond %{HTTP_HOST} ^www [NC]
-    RewriteRule ^(.*)$ https://twreset.herokuapp.com/$1 [L,R=301]
+    RewriteRule ^(.*)$ https://twtools.herokuapp.com/$1 [L,R=301]
 	
     RewriteCond %{REQUEST_URI} ^system.*
     RewriteRule ^(.*)$ /index.php/$1 [L]

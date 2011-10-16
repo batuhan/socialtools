@@ -1,4 +1,4 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	class Main extends CI_Controller {
 		
@@ -22,24 +22,7 @@
 		
 		function index()
 		{
-			echo 'hi there';
+			redirect('http://batuhanicoz.com/socialtools.html');
 		}
-		
-		function resetfollows()
-		{
-			
-			$follows = $this->tweet->call('get', 'friends/ids');
-			if($follows === FALSE){ echo 'opps! something is wrong. can you please try again later?'; }
-			else{
-				foreach($follows as $follow){
-					$person_to_unfollow = array(
-						'user_id' => $follow
-					);
-					
-					$unfollow = $this->tweet->call('post', 'friendships/destroy', $person_to_unfollow);
-				}
-				echo 'Your follow list is now clean!';
-			}
-		
-		}
+
 	}
