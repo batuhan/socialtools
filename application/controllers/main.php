@@ -25,9 +25,9 @@
 		function resetfollows()
 		{
 			$tokens = $this->tweet->get_tokens();
+			$this->tweet->set_tokens($tokens);
 			
-			var_dump($tokens);
-			/*
+			
 			$follows = $this->tweet->call('get', 'friends/ids');
 			if($follows === FALSE){ echo 'opps! something is wrong. can you please try again later?'; }
 			else{
@@ -35,7 +35,7 @@
 			}
 			
 			
-			
+			/*
 			foreach($follows as $follow){
 				
 			}*/
