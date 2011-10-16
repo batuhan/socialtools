@@ -13,6 +13,7 @@
 			if ( !$this->tweet->logged_in() )
 			{
 				redirect('/auth');
+				
 			}else{
 				$tokens = $this->tweet->get_tokens();
 				$this->tweet->set_tokens($tokens);
