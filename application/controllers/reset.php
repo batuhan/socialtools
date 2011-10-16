@@ -28,7 +28,7 @@
 		function index()
 		{
 			$this->load->view('header');
-			echo '<a href="'.site_url('/reset/follows').'">wanna reset follows?</a>';
+			echo '<h1><a href="'.site_url('/reset/follows').'">wanna reset follows?</a><br />NOTE: If it fails, gives an error or something, just refresh the damn thing.</h1>';
 			$this->load->view('footer');
 		}
 		
@@ -39,15 +39,26 @@
 			$follows = $this->tweet->call('get', 'friends/ids');
 			if($follows === FALSE){ echo '<h2>opps! something is wrong. can you please try again later?</h2>'; }
 			else{
+				$i = 0;
 				foreach($follows as $follow){
-					$person_to_unfollow = array(
-						'user_id' => $follow
-					);
-					
-					$unfollow = $this->tweet->call('post', 'friendships/destroy', $person_to_unfollow);
+					$i = $i + 1;
+					if($i < 12){
+						$person_to_unfollow = array(
+							'user_id' => $follow
+						);
+
+						$unfollow = $this->tweet->call('post', 'friendships/destroy', $person_to_unfollow);
+					}
 				}
-				echo '<H1>everyone unfollowed.</H1>';
+				$information = $this->tweet->call('get', 'account/verify_credentials');
+				if($information->friends_count > 1){
+					
+					echo '<H1>'.$i.' unfollowed, '.$information->friends_count.' left. <a href="'.site_url('/reset/follows').'">wanna continue?</a></H1>'; 
+				}else{
+					echo 'everyone unfollowed.';
+				}
 			}
+			
 			$this->load->view('footer');
 		
 		}
